@@ -1,0 +1,41 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Random random = new Random();
+        int minNumber = 0;
+        int maxNumber = 10;
+        int[] array = new int[30];
+        int repeatingNumber = array[0];     
+        int amountOfRepetitions = 0; 
+        int repetitions = 1;
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = random.Next(minNumber, maxNumber);
+            Console.Write(array[i] + " ");
+        }
+
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            if (array[i] == array[i + 1])
+            {
+                repetitions++;
+            }
+            else
+            {
+                repetitions = 1;
+            }
+
+            if (repetitions > amountOfRepetitions)
+            {
+                amountOfRepetitions = repetitions;
+                repeatingNumber = array[i];
+            }
+        }
+
+        Console.WriteLine($"\nЧисло, которое больше всего раз повторяется - {repeatingNumber}." +
+            $"\nКоличество повторений - {amountOfRepetitions}.");
+        Console.ReadKey();
+    }
+}
